@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-# from routes import api_router
+from api.routes import api_router
 
 
 # Create FastAPI instance
@@ -11,4 +11,8 @@ app = FastAPI()
 
 @app.get("/health")
 def health():
+    return {"status": "ok"}
+
+@app.post('/search')
+def search(request: SearchRequest):
     return {"status": "ok"}
