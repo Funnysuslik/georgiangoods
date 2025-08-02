@@ -1,18 +1,16 @@
 from fastapi import FastAPI
 
-from api.routes import api_router
+from api.common import api_router
+from core.config import settings
 
 
-# Create FastAPI instance
 app = FastAPI()
 
 # Register API routes
 # app.include_router(api_router, prefix="/api/v1")
 
+app.include_router(api_router, prefix=settings.API_V1_STR)
+
 @app.get("/health")
 def health():
-    return {"status": "ok"}
-
-@app.post('/search')
-def search(request: SearchRequest):
     return {"status": "ok"}
